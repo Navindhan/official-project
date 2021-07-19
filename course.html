@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Python Course Page</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://kit.fontawesome.com/33c24d814a.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" type="text/css" href="C:\new\fontawesome-free-5.12.0-web\css\all.css">
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+			font-family: sans-serif;
+			box-sizing: border-box;
+		}
+		a{
+			text-decoration: none;
+			color: #fff;
+		}
+		ul li{
+			list-style: none;
+		}
+		body{
+			background: rgba(150,150,150,0.4);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-wrap: wrap;
+			width: 100%; 
+			height: calc(100vh + 120px);
+		}
+		.container{
+			position: relative;			
+			width: 100%;
+			height: 600px;
+			margin: 10px;		
+			box-sizing: border-box;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-wrap: wrap;	
+			/*overflow-y: auto;*/
+		}		
+		.container .image{
+			position: relative;
+			width: 600px;
+			height: 420px;			
+			cursor: pointer;
+			box-shadow: 1px 1px 20px #000;
+			background: #fff;
+			margin: 10px 15px;
+		}
+		.container .image:hover{
+			background: #aaa;
+			box-shadow: 0 0 5px #000;
+		}
+		.container .image img{				
+			position: relative;
+			width: calc(100% - 40px);
+			height: calc(100% - 40px);
+			margin: 20px;
+			border-radius: 10px;
+		}
+		.container .image .fa-play{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+			font-size: 40px; 
+			color: #fff;
+		}
+		.container .image:hover .fa-play{
+			color: #888;
+		}
+		.container .image h4{
+			position: absolute;
+			top: 62%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+			color: #fff;
+			font-size: 20px;
+		}
+		.container .image:hover h4{
+			color: #888;
+		}
+		.container .detail .title,.container .detail .content{
+			padding: 10px 20px;
+		}
+		.container .detail{
+			position: relative;
+			width: 660px;
+			height: 420px;
+			background: #ec4e20;
+			margin: 10px 15px;
+		}
+		.container .detail .content{
+			background: #ddd;
+			color: #101010;
+			border: 1px solid #000;
+			text-align: justify;
+		}
+		.container .detail .title{
+			color: #fff;
+			text-align: center;		
+			text-shadow: 1px 1px 5px #000;
+			text-transform: uppercase;
+		}
+		.container .detail .qna{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-wrap: wrap;
+		}
+		.container .detail .qna div{
+			margin: 10px 5px;
+			width: 220px;
+			height: 290px;
+			background: #ddc;
+			padding: 15px;
+			border-radius: 10px;
+			box-shadow: 1px 1px 5px #000;
+			transition: 0.5s;
+		}
+		.container .detail .qna div p{
+			text-align: justify;
+			line-height: 1.7em;
+		}
+		.container .detail .qna div li{
+			list-style: none;
+			margin: 10px 3px;
+		}
+		.container .detail .qna div:nth-child(1){
+			margin-left: 10px; 
+		}
+		.container .detail .qna div:nth-child(3){
+			width: 180px;
+		}
+		.container .detail .qna div:nth-child(3){
+			margin-right: 10px; 	
+		}
+		.container .detail .qna div h3{
+			margin: 10px 0;
+		}
+		.container .detail .know{
+			position: absolute;
+			bottom: 0;
+			width: 100%;
+			background: #a599b5;
+			padding: 15px;
+			text-align: center;
+			visibility: hidden;
+			transition: 0.5s;
+			transform: translateY(50px);
+			transform-origin: bottom;
+			border: 1px solid #000;
+			cursor: pointer;
+			
+		}
+		.container .detail:hover .qna div{
+			height: 250px;
+		}
+		.container .detail:hover .qna div p{
+			line-height: 1.4em;
+		}
+		.container .detail:hover .qna div li{
+			margin: 7px 3px;
+		}
+		.container .detail:hover .know{
+			transform: translateY(0px);
+			visibility: visible;
+		}
+		.container .detail .know:hover{
+			background: #b5a9c5;
+		}
+		.bottom{
+			position: fixed;
+			bottom: -10px;
+			background: #a599b5;
+			width: 100%;
+			height: 60px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin: 10px 0;
+		}
+		.bottom div{
+			margin: 10px;
+		}
+		.bottom .buy{
+			position: relative;
+			color: #101010;
+			background: #ec4e20;
+			padding: 15px 25px;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+		.bottom .buy:hover{
+			background: #fc6e40;
+		}
+		.fa-youtube{
+			color: #f00;
+		}
+		.fa-instagram{
+			color: #ff0057;
+		}
+		.fa-spotify{
+			color: #060;
+		}
+		.fa-google{
+			color: #44f;
+		}
+		.fa-star,.fa-star-half-alt{
+			color: #ec4e20;
+		}		
+		.container .inner{
+			height: 180px;
+			position: relative;
+			background: #fff;
+			padding: 20px;
+			box-shadow: 1px 2px 10px #000;
+			margin: 10px 20px;
+		}
+		.container .inner:hover{
+			z-index: 10;
+		}
+		.container .inner .best{
+			padding: 5px;
+			width: 100px;
+			margin: 10px 0;
+			background: #ec4e20;
+			text-align: center;
+			border-radius: 5px;
+		}		
+		.container .inner .price{
+			margin: 10px 0;
+			text-align: center;
+		}
+		.container .inner .add{
+			width: 150px;
+			text-align: center;
+			padding: 10px 15px;
+			background: #ec4e20;
+			color: #fff;
+			border-radius: 5px;
+			display: flex;
+			justify-content: center;
+			margin: 20px auto;
+			cursor: pointer;
+		}
+		.container .inner .add:hover{
+			background: #fc6e40;
+		}
+		.container .inner .grt{
+			margin: 15px;
+			text-align: center;
+			color: #44f;
+		}
+		.container .inner ul li{
+			margin: 10px 15px;
+		}
+		.container .inner:nth-child(3) ul{
+			display: flex;
+			flex-wrap: wrap;
+		}
+		.container .inner:nth-child(5){
+			width: 400px;
+			padding: 30px 20px;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+		}
+		.container .inner .wish{
+			width: 170px;
+			height: 45px;
+			padding: 10px;
+			margin: 10px 5px;
+			border: 2px solid #ec4e20;
+			border-radius: 10px;
+			text-align: center;
+			cursor: pointer;
+		}
+		.container .inner .wish:hover{
+			background: #ec4e20;
+			color: #fff;
+		}
+		.container .inner span.name{
+			color: #4559a5;
+			cursor: pointer;
+		}
+		.container .inner span.name:hover{
+			color: #6569c5;
+		}
+
+
+
+		.container .inner span.span{
+			position: absolute;
+		    top: 14px;
+		    left: 13px;
+		    width: 300px;
+		    height: 186px;
+		    display: none;
+		}
+		.inner span.span img{
+			width: 100%;
+			height: 100%;
+		}
+		.inner:nth-child(4)>span.span.active{
+			animation: first 0.5s ease-in;
+			z-index: 5;
+			display: block;
+
+		}
+		.icon{
+			cursor: pointer;
+			font-size: 20px;
+			transform: translateX(100%);
+		}
+		.icon:before{
+			content: attr(data-count);
+		    color: white;
+		    position: absolute;
+		    right: 16px;
+		    font-size: 15px;
+		    text-align: center;
+		    top: -12px;
+		    width: 20px;
+		    height: 20px;
+		    background: red;
+		    border-radius: 50%;
+		    opacity: 0;
+		}
+		.icon.zero:before{
+			opacity: 1;
+		}
+		.select{
+			width: 75%;
+			height: 500px;
+			padding: 20px;
+			background: #222;
+			position: fixed;
+			top: -1000px;
+			left: 10%;
+			transition: 0.5s;
+			overflow-y: auto;
+			margin: auto;
+		}
+		.select.display{
+			top: 10px;
+		}
+		.select .select-box{
+			width: 100%;
+			height: 220px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background: rgba(150,150,150,0.5);
+			margin: 5px;
+		}
+		.select .select-box .photo{
+			width: 48%;
+			height: 200px;
+			padding: 5px;
+			border: 1px solid white;
+			position: relative;
+		}
+		.select .select-box .photo img{
+			width: 100%;
+			height: 100%;
+		}
+		.select .select-box .dtl{
+			width: 48%;
+			height: 200px;
+			padding: 5px;
+			/*color: #fff;*/
+			border: 1px solid white;
+			position: relative;
+		}
+		.select .select-box .dtl .content{
+			width: 100%;
+			height: auto;
+			margin: auto;
+			padding: 10px;
+			background: #fff;
+			border-radius: 10px;
+		}
+		.select .select-box .dtl .price{
+			color: #fff;
+			text-align: center;
+			transform: translateY(40%);
+		}
+		.select .select-box .dtl .add{
+			width: 150px;
+			text-align: center;
+			padding: 10px 15px;
+			background: #ec4e20;
+			color: #fff;
+			border-radius: 5px;
+			display: flex;
+			justify-content: center;
+			margin: 20px auto;
+			cursor: pointer;
+		}
+		.select .select-box .dtl .add:hover{
+			background: #fc6e40;
+		}
+		.select div span{
+			display: none;
+		}
+		.select div span img{
+			display: none;	
+		}
+		@keyframes first{
+			to{
+				width: 30px;
+			    height: 20px;
+			    left: 70%;
+			    top: 450px;
+			}
+		}
+
+		/*This file for Responsive page*/
+		@media(max-width: 1360px){						
+			.container .image{
+				position: relative;
+				width: 1000px;
+				height: 660px;				
+			}						
+			.container .detail{
+				width: calc(100% - 200px);		
+			}
+			.container .detail .qna div{
+				width: 300px;
+				height: 250px;
+				margin: 10px 40px;				
+			}			
+			.container .detail .qna div li{
+				margin: 20px 10px;
+			}
+			.container .detail:hover .qna div{
+				height: 230px;
+			}
+			.box2{
+				width: 100%;
+				height: 300px;	
+			}
+			.container .inner{
+				width: 320px;
+				margin: 10px;
+				height: 230px;
+			}
+		}
+		@media(max-width: 1360px){
+			.container .detail{
+				height: 650px;
+			}	
+		}
+		@media(max-width: 980px){						
+			.container{				
+				margin: auto;
+				margin-bottom: 100px;
+			}
+			.container .image{
+				width: 660px;
+				height: 420px;
+				margin: 15px;
+			}
+			.container .detail{
+				width: 660px;
+				height: 420px;
+				margin: 15px;
+			}
+			.container .detail .qna div{
+				width: 220px;				
+				height: 300px;
+				margin: 5px;
+			}
+			.container .detail .qna div:nth-child(2) li{
+				margin: 10px 2px;			
+			}
+			.container .detail:hover .qna div{
+				height: 250px;
+			}
+			.container .inner{
+				width: 660px;
+				margin: 10px;
+				height: 180px;
+				margin: 15px;
+			}
+			.container .inner:nth-child(5){
+				width: 660px;
+				padding: 30px 20px;
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+			}
+			.container .inner:nth-child(5) .wish{
+				margin: 10px 40px;
+			}
+
+		}
+		
+	</style>
+	<!-- <link rel="stylesheet" type="text/css" href="responsive.css"> -->
+</head>
+<body>
+	<div class="container">		
+		<div class="image">
+			<a href="video_page.html">
+				<img src="python.jpeg"><i class="fa fa-play"></i><h4>Preview this course</h4>
+			</a>
+		</div>
+		<div class="detail">
+			<div class="title"><h2>Python</h2></div>
+			<div class="content"><p> Python course for beginners to start their carreer in Software Development from beginner level to advanced level.</p>	
+			</div>
+			<div class="qna">
+				<div>
+					<h3>What is Python?</h3>
+					<p> Python is an interpreted, high-level and genaral-purose programming language.</p> <p> The Python name was taken from Famous Tv show <b>Monty Python's flying circus</b>.</p>
+				</div>
+				<div>
+					<h3>What is the usage of Python?</h3>
+					<ul>
+						<li><i class="fa fa-server"></i> Shell&nbsp;Scripting</li>
+						<li><i class="fa fa-code"></i> Test&nbsp;Code</li>
+						<li><i class="fab fa-unity"></i> Game&nbsp;Programming</li>
+						<li><i class="fab fa-windows"></i> Windows&nbsp;Development</li>
+						<li><i class="fa fa-globe"></i> Web&nbsp;Development</li>
+					</ul>
+				</div>
+				<div>
+					<h3>What is Gaining popularity in Python?</h3>
+					
+					<ul>
+						<li><i class="fab fa-instagram"></i> Instagram</li>
+						<li><i class="fab fa-youtube"></i> Youtube </li> 
+						<li><i class="fab fa-spotify"></i> Spotify</li>
+						<li><i class="fab fa-google"></i> Google</li>
+					</ul>
+				
+				</div>
+				
+			</div>
+			<a href="video_page.html"><div class="know">Know More</div></a>		
+		</div>
+		<div class="inner">
+			<div class="rating">
+				<p class="best">Bestseller</p>
+				<p><b>Rating (4.5) </b><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+					<i class="fa fa-star"></i> <i class="fa fa-star-half-alt"></i> (35,564 ratings) 1,22,644 students.</p>
+			</div>
+			<div class="info">
+				<p>Created by <span class="name"><u>Navindhan</u></span></p>
+				<ul>
+					<li><i class="fa fa-info-circle"></i> Last update 11/2020</li>
+					<li><i class="fa fa-globe"></i> English, Hindi</li>
+				</ul>
+			</div>
+		</div>
+		<div class="inner">
+			<div class="price"><h2>₹7,999</h2></div>
+			<div class="add">Add to cart</div>
+			<div class="grt">1 Month Money-back Guarantee</div>
+			<span class="span"></span>
+		</div>
+		<div class="inner">
+			<div class="wish">Add to Wishlist <i class="fa fa-heart"></i></div>
+			<div class="wish">Share <i class="fa fa-share"></i></div>
+			<div class="wish">Gift this Course</div>
+			<div class="wish">Apply Coupon</div>
+		</div>		
+	</div>
+	<div class="select"></div>
+	<div class="other-use">
+		<div class="select-box"></div>
+		<div class="photo"></div>
+		<div class="dtl"></div>	
+	</div>
+	
+	<div class="bottom">
+		<div class="price"><b>₹7,999</b></div>
+		<div class="buy">Buy Now</div>
+		<div class="icon"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></div>
+	</div>
+</body>
+<script type="text/javascript">
+	var noti = document.querySelector('.icon');
+	var select = document.querySelector('.select');
+	var button = document.querySelector('.inner .add');
+
+	button.addEventListener('click', function(e){
+		var add = Number(noti.getAttribute('data-count') || 0);
+		console.log(add);
+		noti.setAttribute('data-count', add +1);
+		noti.classList.add('zero')
+
+		// image --animation to cart ---//
+		var image =document.querySelector('img');
+		var span = e.target.parentNode.querySelector('.inner span.span');
+		var s_image = image.cloneNode(false);
+		span.appendChild(s_image);
+		span.classList.add("active");
+		setTimeout(()=>{
+			span.classList.remove("active");
+			span.removeChild(s_image);
+		}, 500); 
+		
+		// copy and paste //
+		// var parent = e.target.parentNode;
+		var image = document.querySelector('img');
+		var content = document.querySelector('.detail .content');
+		var prize = document.querySelector('.inner:nth-child(4) .price');
+		var buy = document.querySelector('.inner:nth-child(4) .add');
+		var selectBox = document.querySelector('.other-use .select-box');
+		var img_div = document.querySelector('.other-use .photo');
+		var dtl_div = document.querySelector('.other-use .dtl');
+
+		var selectBox_clone = selectBox.cloneNode(true);
+
+		var img_div_clone = img_div.cloneNode(true);
+
+		var dtl_div_clone = dtl_div.cloneNode(true);
+
+		var clone = image.cloneNode(true);
+		img_div_clone.appendChild(clone);
+
+		var clone = content.cloneNode(true);
+		dtl_div_clone.appendChild(clone);
+
+		var clone = prize.cloneNode(true);
+		dtl_div_clone.appendChild(clone);
+
+		var clone = buy.cloneNode(true);
+		dtl_div_clone.appendChild(clone);
+		
+		selectBox_clone.appendChild(img_div_clone);
+		selectBox_clone.appendChild(dtl_div_clone);
+
+		select.appendChild(selectBox_clone);
+
+		var buys = document.querySelectorAll('.select .select-box .dtl .add');
+		for(var i=0;i<buys.length;i++){
+			buys[i].innerText = "Buy Now";
+		}
+		
+		noti.onclick = ()=>{
+			select.classList.toggle('display');
+		}	
+		
+	})
+	window.onload=function(){
+		alert(outerWidth);
+	}
+</script>
+</html>
